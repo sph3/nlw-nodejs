@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { response } from 'express';
 
 /*
  * Receber code(string)
@@ -22,5 +23,6 @@ export class AuthUserService {
         Accept: 'application/json',
       },
     });
+    return response.data;
   }
 }
