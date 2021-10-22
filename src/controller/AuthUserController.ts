@@ -10,7 +10,7 @@ export class AuthUserController {
       const result = await service.execute(code);
       return res.json(result);
     } catch (err) {
-      return res.json(err.message);
+      return res.json({ error: err.message });
     }
   }
 }
