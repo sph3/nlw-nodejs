@@ -6,6 +6,6 @@ export class GetLastThreeMessagesController {
     const service = new GetLastThreeMessagesService();
 
     const result = await service.execute();
-    return result;
+    return res.json(result);
   }
 }
