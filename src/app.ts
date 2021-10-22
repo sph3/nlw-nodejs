@@ -10,6 +10,11 @@ app.get('/github', (req, res) => {
   );
 });
 
+app.get('/signin/callback', (req, res) => {
+  const { code } = req.query;
+  return res.json(code);
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
