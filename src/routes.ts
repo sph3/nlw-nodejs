@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { AuthUserController } from './controller/AuthUserController';
 import { CreateMessageController } from './controller/CreateMessageController';
+import { GetLastThreeMessagesController } from './controller/GetLastThreeMessagesController';
 import { ensureAuthenticated } from './middleware/ensureAuthenticated';
 
 export const router = Router();
@@ -11,3 +12,4 @@ router.post(
   ensureAuthenticated,
   new CreateMessageController().handle
 );
+router.get('/messages/last3', new GetLastThreeMessagesController().handle);
