@@ -4,10 +4,13 @@ import { router } from './routes';
 
 const app = express();
 app.use(express.json);
-
-const port = process.env.PORT || 4000;
-
 app.use(router);
+
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Oi');
+});
 
 app.get('/github', (req, res) => {
   res.redirect(
