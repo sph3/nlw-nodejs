@@ -1,5 +1,5 @@
 export class CreateMessageService {
-  async execute() {
-
-  };
+  async execute(text: string, user_id: string) {
+    
+  }
 }
