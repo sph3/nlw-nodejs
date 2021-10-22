@@ -35,6 +35,6 @@ export class AuthUserService {
         authorization: `Bearer ${accessTokenResponse.access_token}`,
       },
     });
-    return accessTokenResponse;
+    return response.data;
   }
 }
