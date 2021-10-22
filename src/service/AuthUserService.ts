@@ -76,6 +76,6 @@ export class AuthUserService {
       { subject: user.id, expiresIn: '1d' }
     );
 
-    return response.data;
+    return { token, user };
   }
 }
