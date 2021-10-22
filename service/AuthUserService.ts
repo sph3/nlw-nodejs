@@ -18,6 +18,9 @@ export class AuthUserService {
         client_secret: process.env.GITHUB_CLIENT_SECRET,
         code,
       },
+      headers: {
+        Accept: 'application/json',
+      },
     });
   }
 }
