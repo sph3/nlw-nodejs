@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { response } from 'express';
+import { prismaClient } from '../prisma/index';
 
 /*
  * Receber code(string)
@@ -46,7 +47,22 @@ export class AuthUserService {
       }
     );
     const { login, id, avatar_url, name } = response.data;
-    const user = await 
+    const user = await prismaClient.user.findFirst({
+      where: {
+        github_id: id,
+      },
+    });
+
+    if (!user) {
+      await prismaClient.user.create({
+        data: {
+          github_id: id,
+          login,
+          avatar_url,
+          name,
+        },
+      });
+    }
     return response.data;
   }
 }
