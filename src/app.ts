@@ -1,8 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
+import { router } from './routes';
 
 const app = express();
 const port = process.env.PORT || 4000;
+
+app.use(router);
 
 app.get('/github', (req, res) => {
   res.redirect(
