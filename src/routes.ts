@@ -3,4 +3,4 @@ import { AuthUserController } from '../controller/AuthUserController';
 
 export const router = Router();
 
-router.post('/authenticate', new AuthUserController().handle);
+router.post('/auth', new AuthUserController().handle);
