@@ -8,8 +8,8 @@ import { router } from './routes';
 const app = express();
 app.use(cors());
 
-const serverHttp = http.createServer(app);
-const io = new Server(serverHttp, {
+export const serverHttp = http.createServer(app);
+export const io = new Server(serverHttp, {
   cors: {
     origin: '*',
   },
@@ -21,8 +21,6 @@ io.on('connection', (socket) => {
 
 app.use(express.json());
 app.use(router);
-
-const port = 3000;
 
 app.get('/', (req, res) => {
   res.send('Working!');
@@ -37,8 +35,4 @@ app.get('/github', (req, res) => {
 app.get('/signin/callback', (req, res) => {
   const { code } = req.query;
   return res.json(code);
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });

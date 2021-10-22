@@ -9,6 +9,7 @@ export class CreateMessageController {
     const service = new CreateMessageService();
 
     const result = await service.execute(message, user_id);
+
     return res.json(result);
   }
 }
