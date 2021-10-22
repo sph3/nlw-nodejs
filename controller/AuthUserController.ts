@@ -6,6 +6,6 @@ export class AuthUserController {
     const { code } = req.body;
     const service = new AuthUserService();
     const result = await service.execute(code);
-    return response.json(result);
+    return res.json(result);
   }
 }
