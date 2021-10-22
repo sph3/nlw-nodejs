@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, request } from 'express';
 import { verify } from 'jsonwebtoken';
 
 export function ensureAuthenticated(
@@ -15,5 +15,11 @@ export function ensureAuthenticated(
   }
 
   const [, token] = authToken.split(' ');
-  const { sub } = verify(token, process.env.JWT_SECRET);
+
+  try {
+    const { sub } = verify(token, process.env.JWT_SECRET);
+    req.user_id = sub;
+  } catch (err) {
+    return res.status(401).json({ errorCode: 'token.expired' });
+  }
 }
