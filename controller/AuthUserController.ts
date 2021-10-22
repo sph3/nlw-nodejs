@@ -1,9 +1,11 @@
-import { Request, Response } from 'express';
+import { Request, response, Response } from 'express';
 import { AuthUserService } from '../service/AuthUserService';
 
 export class AuthUserController {
   async handle(req: Request, res: Response) {
+    const { code } = req.body;
     const service = new AuthUserService();
-    // service.execute();
+    const result = await service.execute(code);
+    return response.json(result);
   }
 }
