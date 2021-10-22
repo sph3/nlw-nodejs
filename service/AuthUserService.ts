@@ -45,6 +45,8 @@ export class AuthUserService {
         },
       }
     );
+    const { login, id, avatar_url, name } = response.data;
+    const user = await 
     return response.data;
   }
 }
