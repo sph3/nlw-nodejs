@@ -29,6 +29,12 @@ export class AuthUserService {
           Accept: 'application/json',
         },
       });
+
+    const response = await axios.get('https://api.github.com/user', {
+      headers: {
+        authorization: `Bearer ${accessTokenResponse.access_token}`,
+      },
+    });
     return accessTokenResponse;
   }
 }
